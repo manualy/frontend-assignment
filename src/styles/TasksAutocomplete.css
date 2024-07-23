@@ -1,0 +1,48 @@
+.tasks-autocomplete-menu {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.tasks-autocomplete-menu-item {
+  font-weight: 400;
+  border-radius: 0px !important;
+  width: 100% !important;
+  padding: 0 1.5rem !important;
+  margin: 0 !important;
+}
+
+.tasks-autocomplete-menu-group {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.tasks-autocomplete-menu-group .ant-menu-item-group-title {
+  font-weight: 600;
+  font-size: smaller;
+  margin: 0px;
+  padding: 0.625rem 0.8rem;
+  opacity: 80%;
+}
+
+.tasks-autocomplete-popup {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Scrollbar track */
+.hidden-scrollbar::-webkit-scrollbar {
+  width: 1px; /* Scrollbar width */
+  height: 1px; /* For horizontal scrollbar */
+}
+
+/* Scrollbar thumb */
+.hidden-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #1bc6b8; /* Scrollbar color */
+  border-radius: 5px; /* Rounded corners */
+  background-clip: padding-box; /* Ensure background is clipped properly */
+}
+
+/* Optional: Add styling for the scrollbar track (the area where the thumb moves) */
+.hidden-scrollbar::-webkit-scrollbar-track {
+  background: transparent; /* Transparent background */
+}

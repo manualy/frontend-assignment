@@ -10,35 +10,49 @@ interface Props extends MenuItemProps {
 }
 
 export const TaskMenuItem = ({ task, ...props }: Props) => {
-  const [isHovering, setIsHovering] = useState(false);
   const [isHoveringStar, setIsHoveringStar] = useState(false);
 
   const { addBookmark, removeBookmark } = useTasksContext();
 
   return (
-    <Menu.Item
-      {...props}
-      onMouseEnter={() => setIsHovering(true)}
-      onMouseLeave={() => setIsHovering(false)}
-    >
+    <Menu.Item {...props} className="tasks-autocomplete-menu-item">
       <div className="flex items-center justify-between">
         <span>{task.name}</span>
         <div
           onMouseEnter={() => setIsHoveringStar(true)}
           onMouseLeave={() => setIsHoveringStar(false)}
         >
-          {isHovering &&
-            (task.bookmarked ? (
-              isHoveringStar ? (
-                <StarIcon onClick={() => removeBookmark(task.id)} />
-              ) : (
-                <StarFilledIcon onClick={() => addBookmark(task.id)} />
-              )
-            ) : isHoveringStar ? (
-              <StarFilledIcon onClick={() => addBookmark(task.id)} />
+          {task.bookmarked ? (
+            isHoveringStar ? (
+              <StarIcon
+                onClick={() => removeBookmark(task.id)}
+                className="fill-text-main"
+                width={18}
+                height={18}
+              />
             ) : (
-              <StarIcon onClick={() => removeBookmark(task.id)} />
-            ))}
+              <StarFilledIcon
+                onClick={() => addBookmark(task.id)}
+                className="fill-primary"
+                width={18}
+                height={18}
+              />
+            )
+          ) : isHoveringStar ? (
+            <StarFilledIcon
+              onClick={() => addBookmark(task.id)}
+              className="fill-primary"
+              width={18}
+              height={18}
+            />
+          ) : (
+            <StarIcon
+              onClick={() => removeBookmark(task.id)}
+              className="fill-text-main"
+              width={18}
+              height={18}
+            />
+          )}
         </div>
       </div>
     </Menu.Item>

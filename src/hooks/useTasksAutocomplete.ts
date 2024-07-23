@@ -18,9 +18,9 @@ export const useTasksAutocomplete = () => {
 
   const handlePressEnter = useCallback(
     (event: React.KeyboardEvent<HTMLInputElement>) => {
-      // Handle Enter key press
       if (event.key === "Enter") {
-        addNewTask({ name: searchValue, bookmarked: false }); // Trigger the addNewTask function
+        addNewTask({ name: searchValue, bookmarked: false });
+        setSearchValue("");
       }
     },
     [addNewTask, searchValue]

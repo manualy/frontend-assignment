@@ -6,6 +6,7 @@ import { initalState, Session, sessionReducer } from "../store/SessionReducer";
 export type SessionContextValue = Session & {
   login: (params: { email: string; password: string }) => void;
   logout: () => void;
+  clearError: () => void;
 };
 
 export const SessionContext = createContext<SessionContextValue | undefined>(
@@ -48,6 +49,7 @@ export function SessionContextProvider({
       login: (params: { email: string; password: string }) =>
         mutate.mutate(params),
       logout: () => dispatch({ type: "logout" }),
+      clearError: () => dispatch({ type: "clearError" }),
     }),
 
     [mutate, session]

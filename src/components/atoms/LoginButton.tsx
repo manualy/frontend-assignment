@@ -1,13 +1,9 @@
-import { Button } from "antd";
-import { useSessionContext } from "../../hooks/useSessionContext";
+import { Button, ButtonProps } from "antd";
 
-interface Props {
-  email: string;
-  password: string;
-}
-
-export const LoginButton = (params: Props) => {
-  const { login } = useSessionContext();
-
-  return <Button onClick={() => login(params)}>Login</Button>;
+export const LoginButton = (props: ButtonProps) => {
+  return (
+    <Button {...props} htmlType="submit" type="primary">
+      Login
+    </Button>
+  );
 };

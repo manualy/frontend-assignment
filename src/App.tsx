@@ -6,6 +6,7 @@ import { ProtectedRoute } from "./components/atoms/ProtectedRoute";
 import { NotFoundPage } from "./components/pages/NotFoundPage";
 import { AuthRoute } from "./components/atoms/AuthRoute";
 import { TasksPage } from "./components/pages/TasksPage";
+import { ConfigProvider } from "antd";
 
 const router = createBrowserRouter([
   {
@@ -36,7 +37,17 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <SessionContextProvider>
-        <RouterProvider router={router} />
+        <ConfigProvider
+          theme={{
+            token: {
+              colorPrimary: "#1BC6B8",
+              colorText: "#485963",
+              colorBgTextActive: "#EBF9F8",
+            },
+          }}
+        >
+          <RouterProvider router={router} />
+        </ConfigProvider>
       </SessionContextProvider>
     </QueryClientProvider>
   );

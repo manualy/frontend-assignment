@@ -7,7 +7,7 @@ export const LoginPage = () => {
   }, []);
 
   return (
-    <div className="flex h-full items-center justify-center">
+    <div className="flex h-full items-center justify-center px-12">
       <LoginPanel />
     </div>
   );

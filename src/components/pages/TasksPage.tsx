@@ -5,10 +5,12 @@ import { MainTemplate } from "../templates/MainTemplate";
 export const TasksPage = () => {
   return (
     <MainTemplate pageTitle="Tasks">
-      <main className="w-full h-full">
-        <TasksContextProvider>
-          <TasksAutocomplete />
-        </TasksContextProvider>
+      <main className="w-full flex justify-center">
+        <div className="max-w-xl w-full px-10">
+          <TasksContextProvider>
+            <TasksAutocomplete />
+          </TasksContextProvider>
+        </div>
       </main>
     </MainTemplate>
   );

@@ -11,7 +11,12 @@ interface SessionState {
 
 export type Session = SessionCache & SessionState;
 
-type ReducerActionType = "isLoading" | "isError" | "login" | "logout";
+type ReducerActionType =
+  | "isLoading"
+  | "isError"
+  | "login"
+  | "logout"
+  | "clearError";
 
 interface SessionReducerAction<GAction extends ReducerActionType, GPayload> {
   type: GAction;
@@ -28,7 +33,8 @@ type SessionReducerActions =
   | SessionReducerAction<"login", SessionCache>
   | SessionReducerAction<"isError", Session["error"]>
   | SessionReducerActionWithoutPayload<"isLoading">
-  | SessionReducerActionWithoutPayload<"logout">;
+  | SessionReducerActionWithoutPayload<"logout">
+  | SessionReducerActionWithoutPayload<"clearError">;
 
 export type SessionReducerDispatch = React.Dispatch<SessionReducerActions>;
 
@@ -75,6 +81,10 @@ export const sessionReducer = (
 
     case "isError": {
       return { ...state, isLoading: false, error: action.payload };
+    }
+
+    case "clearError": {
+      return { ...state, error: null };
     }
 
     case "isLoading": {

@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useSessionContext } from "../../hooks/useSessionContext";
 import { LogoutButton } from "../atoms/LogoutButton";
+import { Tooltip } from "antd";
 
 interface TemplateProps {
   pageTitle: string;
@@ -16,9 +17,13 @@ export const MainTemplate = ({ pageTitle, children }: TemplateProps) => {
 
   return (
     <>
-      <header className="flex justify-between p-8 px-12">
-        <p>{email}</p>
-        <LogoutButton />
+      <header className="flex p-8 px-10 items-center gap-4 justify-center sm:justify-between sm:flex-row flex-col">
+        <Tooltip title={email}>
+          <p className="text-ellipsis overflow-hidden min-w-24">{email}</p>
+        </Tooltip>
+        <div className="justify-center">
+          <LogoutButton />
+        </div>
       </header>
       {children}
     </>

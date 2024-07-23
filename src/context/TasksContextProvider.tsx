@@ -109,7 +109,8 @@ export function TasksContextProvider({
     () => ({
       addBookmark: (taskId: number) => addBookmarkMutation.mutate(taskId),
       removeBookmark: (taskId: number) => removeBookmarkMutation.mutate(taskId),
-      addNewTask: (task: Omit<Task, "id">) => addTaskMutation.mutate(task),
+      addNewTask: (task: Omit<Task, "id">) =>
+        task.name && addTaskMutation.mutate(task),
       tasks,
       isLoading,
       error,
