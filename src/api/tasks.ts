@@ -27,7 +27,7 @@ export const listTasks = async (
     page: number;
   }
 ): Promise<ListTasksResponse> => {
-  const url = new URL("https://timtest.timenotes.io/api/v1/tasks");
+  const url = new URL(`${import.meta.env.VITE_API_URL}/tasks`);
   url.searchParams.append("per_page", payload.per_page.toString());
   url.searchParams.append("page", payload.page.toString());
 
@@ -47,7 +47,7 @@ export const listTasks = async (
 };
 
 export const addNewTask = async (token: string, task: Omit<Task, "id">) => {
-  const url = new URL("https://timtest.timenotes.io/api/v1/tasks");
+  const url = new URL(`${import.meta.env.VITE_API_URL}/tasks`);
 
   const response = await fetch(url.toString(), {
     method: "POST",
@@ -67,7 +67,7 @@ export const addNewTask = async (token: string, task: Omit<Task, "id">) => {
 
 export const addBookmark = async (token: string, taskId: number) => {
   const url = new URL(
-    `https://timtest.timenotes.io/api/v1/tasks/${taskId}/bookmark`
+    `${import.meta.env.VITE_API_URL}/tasks/${taskId}/bookmark`
   );
 
   const response = await fetch(url.toString(), {
@@ -87,7 +87,7 @@ export const addBookmark = async (token: string, taskId: number) => {
 
 export const removeBookmark = async (token: string, taskId: number) => {
   const url = new URL(
-    `https://timtest.timenotes.io/api/v1/tasks/${taskId}/unbookmark`
+    `${import.meta.env.VITE_API_URL}/tasks/${taskId}/unbookmark`
   );
 
   const response = await fetch(url.toString(), {
